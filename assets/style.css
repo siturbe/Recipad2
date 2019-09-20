@@ -1,0 +1,127 @@
+nav {
+    background-color: white;
+    border-bottom-style: solid;
+    border-bottom-color: green;
+    border-bottom-width: 5px;
+    position: fixed;
+    float: left;
+    top: 0px;
+    left: 0px;
+    z-index: 5;
+    
+}
+
+#description{
+    text-align: justify;
+    font-size: 18px;
+    margin-bottom: 15px;
+    font-weight: bold;
+    font-family: 'Open Sans', sans-serif;
+}
+
+#searchBar{
+    margin-top: 20px;
+    font-size: 16px;
+    font-family: 'Open Sans', sans-serif;
+    color: black;
+}
+
+#searchBarLabel{
+    margin-top:15px;
+    font-size: 22px;
+    font-family: 'Open Sans', sans-serif;
+    color: black;
+    margin-bottom: 20px;
+}
+
+#confirmation-section{
+    margin-top: 20px;
+    font-size: 18px;
+    font-family: 'Open Sans', sans-serif;
+}
+
+body{
+    background-image: url('../assets/images/produce.jpg');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
+}
+
+#container{
+    background-color: white;
+    opacity: .9;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-right: 10px;
+    padding-left: 10px;
+    /* margin-top: 105px; */
+    position: relative;
+    top: 70px;
+    /* left: 0px; */
+}
+
+
+#ingredientExclusion{
+    margin-top: 20px;
+    font-size: 16px;
+    font-family: 'Open Sans', sans-serif;
+    color: black;
+}
+
+#ingredientExclusionLabel{
+    margin-top:15px;
+    font-size: 22px;
+    font-family: 'Open Sans', sans-serif;
+    color: black;
+
+}
+
+#cuisine-input{
+    margin-top: 20px;
+    font-size: 16px;
+    font-family: 'Open Sans', sans-serif;
+    color: black;
+}
+
+#cuisine-inputLabel{
+    margin-top:15px;
+    font-size: 22px;
+    font-family: 'Open Sans', sans-serif;
+    color: black;
+    margin-bottom: 20px;
+}
+
+.thumbnail{
+    margin-top: 15px;
+    width:200px;
+    height: 200px;
+}
+
+p{
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.choice-btn{
+    float:left;
+    margin-right: 15px;
+    margin-bottom: 15px;
+    margin-top: 15px;
+    margin-left: 15px;
+}
+
+#phoneNumber{
+    margin-top: 20px;
+    font-size: 16px;
+    font-family: 'Open Sans', sans-serif;
+    color: black;
+}
+
+#phoneNumberLabel{
+    margin-top:15px;
+    font-size: 22px;
+    font-family: 'Open Sans', sans-serif;
+    color: black;
+
+}

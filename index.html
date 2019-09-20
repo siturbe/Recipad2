@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+    <head>
+        <meta charset="UTF-8">
+        <title>ReciPad</title>
+        <link rel="stylesheet" href='assets/reset.css'>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>   
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+        <link rel="stylesheet" href='assets/style.css'>
+        <!-- <script src="https://www.gstatic.com/firebasejs/6.0.4/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/6.0.4/firebase-database.js"></script> -->
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet">
+    </head>
+
+    <body>
+
+        <nav>
+                <div class="nav-wrapper">
+                  <a href="#!" class="brand-logo"><span style='color: green' style='font-weight: bold'>Reci</span><span style='color:greenyellow'>Pad</span></a>
+                  <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons green-text">menu</i></a>
+                  <ul class="right hide-on-med-and-down">
+                    <li class="logged-in" >
+                        <a href="#" class="green-text modal-trigger" data-target="modal-myList">My List</a>
+                    </li>
+                    <li class="logged-in" >
+                        <a href="#" class="green-text modal-trigger" data-target="modal-quickAdd">Quick Add</a>
+                    </li>
+                    <li class="logged-out"  >
+                        <a href="#" class="green-text modal-trigger" data-target="modal-login">Login</a>
+                    </li>
+                    <li class="logged-in"  >
+                        <a href="#" class="green-text" id="logout">Logout</a>
+                    </li>
+                    <li class="logged-out"  >
+                        <a href="#" class="green-text modal-trigger" data-target="modal-signup">Sign up</a>
+                    </li>
+                  </ul>
+                </div>
+        </nav>
+            
+              <ul class="sidenav" id="mobile-demo">
+                    <li class="logged-in" >
+                    <a href="#" class="green-text modal-trigger" data-target="modal-myList">My List</a>
+                    </li>
+                    <li class="logged-in" >
+                    <a href="#" class="green-text modal-trigger" data-target="modal-quickAdd">Quick Add</a>
+                    </li>
+                    <li class="logged-out"  >
+                    <a href="#" class="green-text modal-trigger" data-target="modal-login">Login</a>
+                    </li>
+                    <li class="logged-in" >
+                    <a href="#" class="green-text" id="logout">Logout</a>
+                    </li>
+                    <li class="logged-out"  >
+                    <a href="#" class="green-text modal-trigger" data-target="modal-signup">Sign up</a>
+                    </li>
+               </ul>
+        
+
+        <!-- sign up modal - materialize -->
+        <div id="modal-signup" class="modal">
+            <div class="modal-content">
+                <h4>Sign up</h4><br/>
+                <form id="signup-form">
+                <div class="input-field">
+                    <input type="email" id="signup-email" required />
+                    <label for="signup-email">Email address</label>
+                </div>
+                <div class="input-field">
+                    <input type="password" id="signup-password" required />
+                    <label for="signup-password">Choose password</label>
+                </div>
+                <button class="btn yellow darken-2 z-depth-0">Sign up</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- log in modal - materialize -->
+        <div id="modal-login" class="modal">
+            <div class="modal-content">
+                <h4>Log In</h4><br/>
+                <form id="login-form">
+                <div class="input-field">
+                    <input type="email" id="login-email" required />
+                    <label for="login-email">Email Address</label>
+                </div>
+                <div class="input-field">
+                    <input type="password" id="login-password" required />
+                    <label for="login-password">Enter Password</label>
+                </div>
+                <button class="btn yellow darken-2 z-depth-0">Log In</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- account user info modal -->
+        <div id="modal-myList" class="modal">
+            <div class="modal-content center-aling">
+                <h4>My List</h4><br/>
+                <h5 id="shoppingList"></h5>
+            </div>
+        </div>            
+
+        <!-- log in modal - materialize -->
+        <div id="modal-quickAdd" class="modal">
+            <div class="modal-content">
+                <h4>Extras</h4><br/>
+                <form id="create-form">
+                <div class="input-field">
+                    <textarea type="content" class="materialize-textarea" id="addItem-input" required></textarea>
+                    <label for="content">Snacks and Drinks Etc.</label>
+                </div>
+                <button class="btn yellow darken-2 z-depth-0">Add</button>
+                </form>
+            </div>
+        </div>
+
+        <div id="container" class="container col s12 m12 l8 offset-l2">
+            <div id='description'>ReciPad can look up a recipe for you, and then adds the ingredients to a master shopping list so you never have to waste time at the grocery store trying to remember what you need!</div>
+            <form action="#">
+                <p>
+                  <label>
+                    <input id='restriction1' type="checkbox" value='vegetarian' />
+                    <span style='color: green' style='font-weight: bold'>Vegetarian?</span>
+                  </label>
+                </p>
+                <p>
+                    <label>
+                        <input  id='restriction2' type="checkbox" value='vegan' />
+                        <span style='color: green' style='font-weight: bold'>Vegan?</span>
+                    </label>
+                </p>
+
+                <p>Separate multiple items in your input below with a coma.</p>
+                <div class='input-field col m12'>
+                    <input placeholder="peanuts" id="ingredientExclusion" type="text" class="validate">
+                    <label id="ingredientExclusionLabel" for="ingredientExclusion">Ingredients to Exclude:</label>    
+                </div>
+
+                <div class='input-field col m12'>
+                    <input placeholder="Chinese" id="cuisine-input" type="text" class="validate">
+                    <label id="cuisine-inputLabel" for="cuisine-input">Cuisines?</label>    
+                </div>
+
+                <div class='input-field col m12'>
+                    <input placeholder="Lasagna" id="searchBar" type="text" class="validate">
+                    <label id="searchBarLabel" for="searchBar">Recipe Name (Requiered):</label>    
+                </div>
+            </form>
+
+            <button id='searchButton' class="btn waves-effect waves-light" type="submit" name="action" style='background-color: green'>New Search
+                    <i class="material-icons right"></i>
+            </button>
+            <div id='confirmation-section' class='row'>
+                <div id='confirmRecipe' class='col m12'>Add recipes first, then select the following options:</div>
+                <div id='saveRecipesButton' class='choice-btn'>
+                        <a class="waves-effect waves-light btn" style='background-color: green'>Save Recipe Details</a>
+                </div>
+                <div id='showSavedRecipesButton' class='choice-btn'>
+                        <a class="waves-effect waves-light btn" style='background-color: green'>Show Saved Recipes</a>
+                </div>
+                <div id='showShoppingList' class='choice-btn'>
+                        <a class="waves-effect waves-light btn" style='background-color: green'>Show Needed Shopping List</a>
+                </div>
+                <div id='clearButton' class='choice-btn'>
+                        <a class="waves-effect waves-light btn" style='background-color: green'>Clear Saved Recipes</a>
+                </div>
+                <div id='sendListToPhone' class='choice-btn'>
+                    <a class="waves-effect waves-light btn" style='background-color: green'>Send Shopping List to Phone</a>
+                </div>
+            </div>
+
+            <!-- search result list of recipes  -->
+            <div id='search-output'>
+                <div class='row'></div>
+                <div id='recipe-list' class = 'col m12'></div>
+            </div>
+
+            <div class="container" style="margin-top: 40px;">
+                <ul class="collapsible z-depth-0 quickAdds" style="border: none;">
+    
+                </ul>
+            </div>
+
+        </div>
+
+        <!-- test editable list -->
+        
+
+        <script src="https://www.gstatic.com/firebasejs/6.6.1/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/6.6.1/firebase-auth.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/6.6.1/firebase-firestore.js"></script>
+
+        
+        <script>
+          // Your web app's Firebase configuration
+          var firebaseConfig = {
+                apiKey: "AIzaSyAg1Jfe5UX_hieHr8S2rRjwVMEd-AuxWng",
+                authDomain: "recipad-ddf61.firebaseapp.com",
+                databaseURL: "https://recipad-ddf61.firebaseio.com",
+                projectId: "recipad-ddf61",
+                storageBucket: "recipad-ddf61.appspot.com",
+                messagingSenderId: "633336468983",
+                appId: "1:633336468983:web:9b09e18f4668e9c2344af2"
+         };
+          // Initialize Firebase
+          firebase.initializeApp(firebaseConfig);
+
+          //make auth and firestore references
+          let auth = firebase.auth();
+          let db = firebase.firestore();
+
+        //   db.settings({ timestampsInSnapshots: true });
+        </script>
+        <script src="assets/auth.js"></script>
+        <script src="assets/script.js"></script>
+        <!-- <script src="assets/sms.js"></script> -->
+ 
+    </body>
+    
+
+   
